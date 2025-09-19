@@ -64,10 +64,8 @@ export function Skills() {
             Skills & Expertise
           </h2>
           
-          {/* Carousel Container */}
           <div className="relative">
             <div className="flex items-center justify-center space-x-2 sm:space-x-4 md:space-x-6 px-2">
-              {/* Previous Button - Hidden on mobile */}
               <Button
                 variant="outline"
                 size="icon"
@@ -77,7 +75,6 @@ export function Skills() {
                 <ChevronLeft className="h-5 w-5" />
               </Button>
 
-              {/* Cards Container */}
               <div className="w-full sm:w-auto overflow-x-auto py-4 sm:py-0">
                 <div className="flex space-x-4 sm:space-x-6 px-2 sm:px-0" style={{ minWidth: 'max-content' }}>
                   {getVisibleCards().map((card, index) => {
@@ -89,34 +86,34 @@ export function Skills() {
                           index === 1 ? 'scale-105 border-primary/30' : 'scale-100'
                         }`}
                       >
-                      <div className="text-center space-y-4">
-                        <div className="flex justify-center">
-                          <div className="p-3 bg-primary/20 rounded-full">
-                            <IconComponent className="h-8 w-8 text-primary" />
+                        <div className="text-center space-y-4">
+                          <div className="flex justify-center">
+                            <div className="p-3 bg-primary/20 rounded-full">
+                              <IconComponent className="h-8 w-8 text-primary" />
+                            </div>
+                          </div>
+                          
+                          <h3 className="text-xl text-white">
+                            {card.title}
+                          </h3>
+                          
+                          <div className="flex flex-wrap gap-2 justify-center">
+                            {card.skills.map((skill) => (
+                              <span
+                                key={skill}
+                                className="px-3 py-1 bg-white/10 text-white/80 text-sm rounded-full border border-white/20"
+                              >
+                                {skill}
+                              </span>
+                            ))}
                           </div>
                         </div>
-                        
-                        <h3 className="text-xl text-white">
-                          {card.title}
-                        </h3>
-                        
-                        <div className="flex flex-wrap gap-2 justify-center">
-                          {card.skills.map((skill) => (
-                            <span
-                              key={skill}
-                              className="px-3 py-1 bg-white/10 text-white/80 text-sm rounded-full border border-white/20"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </Card>
-                  );
-                })}
+                      </Card>
+                    );
+                  })}
+                </div>
               </div>
 
-              {/* Next Button */}
               <Button
                 variant="outline"
                 size="icon"
@@ -127,7 +124,6 @@ export function Skills() {
               </Button>
             </div>
 
-            {/* Indicators */}
             <div className="flex justify-center mt-8 space-x-2">
               {skillCards.map((_, index) => (
                 <button
