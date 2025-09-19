@@ -106,7 +106,7 @@ export function Hero() {
              {/* Image */}
             <div className="relative z-10 p-4">
               <ImageWithFallback
-                src={`${process.env.PUBLIC_URL}/usman.jpeg`}
+                src={`${import.meta.env.BASE_URL}usman.jpeg`}
                 alt="Usman Hassan - Full Stack Developer"
                 className="w-full h-auto rounded-xl transition-transform duration-300 hover:scale-105"
               />
