@@ -103,14 +103,15 @@ export function Hero() {
                 <div className="w-full h-full bg-black rounded-2xl"></div>
               </div>
 
-              {/* Image */}
-              <div className="relative z-10 p-4">
-                <ImageWithFallback
-                  src="https://mughal-66.github.io/Usman-Portfolio/usman.jpeg"
-                  alt="Usman Hassan - Full Stack Developer"
-                  className="w-full h-auto rounded-xl transition-transform duration-300 hover:scale-105"
-                />
-              </div>
+             {/* Image */}
+            <div className="relative z-10 p-4">
+              <ImageWithFallback
+                src={`${process.env.PUBLIC_URL}/usman.jpeg`}
+                alt="Usman Hassan - Full Stack Developer"
+                className="w-full h-auto rounded-xl transition-transform duration-300 hover:scale-105"
+              />
+            </div>
+
 
               {/* Enhanced floating elements */}
               <div className="absolute -top-6 -right-6 w-24 h-24 bg-primary/20 rounded-full blur-xl luxury-float"></div>
