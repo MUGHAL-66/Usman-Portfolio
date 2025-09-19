@@ -106,7 +106,7 @@ export function Hero() {
               {/* Image */}
               <div className="relative z-10 p-4">
                 <ImageWithFallback
-                  src="https://mughal-66.github.io/My-Portfolio/usman.jpeg"
+                  src="https://mughal-66.github.io/Usman-Portfolio/usman.jpeg"
                   alt="Usman Hassan - Full Stack Developer"
                   className="w-full h-auto rounded-xl transition-transform duration-300 hover:scale-105"
                 />

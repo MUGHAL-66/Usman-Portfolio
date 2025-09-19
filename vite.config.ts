@@ -5,6 +5,8 @@
 
   export default defineConfig({
     plugins: [react()],
+    base: '/Usman-Portfolio/',   // repo name
+
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {
