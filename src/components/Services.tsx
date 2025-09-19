@@ -141,37 +141,60 @@ export function Services() {
     beforeChange: (current: number, next: number) => setCurrentSlide(next),
     responsive: [
       {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          arrows: true
+        }
+      },
+      {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
+          arrows: true
         }
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 1.2,
           slidesToScroll: 1,
-          arrows: false
+          arrows: false,
+          centerMode: true,
+          centerPadding: '16px',
+          dots: true
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1.1,
+          slidesToScroll: 1,
+          arrows: false,
+          centerMode: true,
+          centerPadding: '8px',
+          dots: true
         }
       }
     ]
   };
 
   return (
-    <section id="services" className="py-24 relative overflow-hidden">
+    <section id="services" className="py-16 md:py-24 relative overflow-hidden">
       {/* Dark gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-black to-gray-900"></div>
       
       {/* Luxury background elements */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-32 left-20 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
-        <div className="absolute bottom-32 right-20 w-80 h-80 bg-primary rounded-full blur-3xl"></div>
+        <div className="absolute top-32 left-4 sm:left-10 md:left-20 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-primary rounded-full blur-3xl"></div>
+        <div className="absolute bottom-32 right-4 sm:right-10 md:right-20 w-56 sm:w-64 md:w-80 h-56 sm:h-64 md:h-80 bg-primary rounded-full blur-3xl"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="text-center space-y-6 mb-16 luxury-fade-in">
+        <div className="text-center space-y-4 sm:space-y-6 mb-12 md:mb-16 luxury-fade-in">
           {/* Play/Pause Toggle Button */}
           <div className="flex justify-end mb-4">
             <button
@@ -196,77 +219,79 @@ export function Services() {
         </div>
 
         {/* Services Carousel */}
-        <div className="services-slider-container relative">
-          <Slider ref={sliderRef} {...settings}>
-            {services.map((service, index) => {
-              const IconComponent = service.icon;
-              return (
-                <div key={service.id} className="px-4">
-                  <Card className="h-full bg-gradient-to-br from-card/90 via-card/70 to-card/50 border border-white/10 hover:border-primary/30 backdrop-blur-xl transition-all duration-500 group hover:shadow-2xl hover:shadow-primary/10 services-card-glow rounded-2xl">
-                    {/* Card Content */}
-                    <div className="p-8 h-full flex flex-col relative overflow-hidden">
-                      {/* Hover Effect Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
-                      
-                      {/* Animated Border */}
-                      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent h-[1px] top-0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-                      </div>
+        <div className="services-slider-container relative px-2 sm:px-0">
+          <div className="py-4 sm:py-6">
+            <Slider ref={sliderRef} {...settings}>
+              {services.map((service, index) => {
+                const IconComponent = service.icon;
+                return (
+                  <div key={service.id} className="px-4">
+                    <Card className="h-full bg-gradient-to-br from-card/90 via-card/70 to-card/50 border border-white/10 hover:border-primary/30 backdrop-blur-xl transition-all duration-500 group hover:shadow-2xl hover:shadow-primary/10 services-card-glow rounded-2xl">
+                      {/* Card Content */}
+                      <div className="p-8 h-full flex flex-col relative overflow-hidden">
+                        {/* Hover Effect Overlay */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl"></div>
+                        
+                        {/* Animated Border */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-primary/20 to-transparent h-[1px] top-0 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+                        </div>
 
-                      <div className="relative z-10 h-full flex flex-col min-h-[500px]">
-                        {/* Icon & Emoji */}
-                        <div className="flex items-center justify-between mb-6">
-                          <div className="flex items-center gap-4">
-                            <div className="p-4 bg-primary/20 rounded-2xl group-hover:bg-primary/30 transition-colors duration-300 services-icon-glow">
-                              <IconComponent className="h-8 w-8 text-primary" />
+                        <div className="relative z-10 h-full flex flex-col min-h-[500px]">
+                          {/* Icon & Emoji */}
+                          <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center gap-4">
+                              <div className="p-4 bg-primary/20 rounded-2xl group-hover:bg-primary/30 transition-colors duration-300 services-icon-glow">
+                                <IconComponent className="h-8 w-8 text-primary" />
+                              </div>
+                              <span className="text-3xl filter drop-shadow-lg">{service.emoji}</span>
                             </div>
-                            <span className="text-3xl filter drop-shadow-lg">{service.emoji}</span>
+                          </div>
+
+                          {/* Title */}
+                          <h3 className="text-2xl text-white group-hover:text-primary transition-colors duration-300 mb-4">
+                            {service.title}
+                          </h3>
+
+                          {/* Description */}
+                          <p className="text-gray-400 leading-relaxed mb-6">
+                            {service.description}
+                          </p>
+
+                          {/* Highlights Label */}
+                          <div className="mb-4">
+                            <h4 className="text-sm text-primary/80 uppercase tracking-wider font-medium">
+                              Highlights
+                            </h4>
+                            <div className="w-8 h-[1px] bg-primary/60 mt-1"></div>
+                          </div>
+
+                          {/* Features */}
+                          <div className="space-y-4 flex-grow">
+                            {service.features.map((feature, featureIndex) => (
+                              <div 
+                                key={featureIndex} 
+                                className="flex items-start gap-3 services-feature-reveal group/feature"
+                                style={{ animationDelay: `${featureIndex * 200}ms` }}
+                              >
+                                <Diamond className="h-3 w-3 text-primary mt-1.5 flex-shrink-0 fill-current group-hover/feature:text-primary/80 transition-colors duration-300" />
+                                <span className="text-gray-500 leading-relaxed group-hover/feature:text-gray-400 transition-colors duration-300">{feature}</span>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Decorative Bottom Line */}
+                          <div className="mt-8 pt-6 border-t border-white/10">
+                            <div className="w-20 h-[2px] bg-gradient-to-r from-primary via-primary/50 to-transparent rounded-full services-line-glow"></div>
                           </div>
                         </div>
-
-                        {/* Title */}
-                        <h3 className="text-2xl text-white group-hover:text-primary transition-colors duration-300 mb-4">
-                          {service.title}
-                        </h3>
-
-                        {/* Description */}
-                        <p className="text-gray-400 leading-relaxed mb-6">
-                          {service.description}
-                        </p>
-
-                        {/* Highlights Label */}
-                        <div className="mb-4">
-                          <h4 className="text-sm text-primary/80 uppercase tracking-wider font-medium">
-                            Highlights
-                          </h4>
-                          <div className="w-8 h-[1px] bg-primary/60 mt-1"></div>
-                        </div>
-
-                        {/* Features */}
-                        <div className="space-y-4 flex-grow">
-                          {service.features.map((feature, featureIndex) => (
-                            <div 
-                              key={featureIndex} 
-                              className="flex items-start gap-3 services-feature-reveal group/feature"
-                              style={{ animationDelay: `${featureIndex * 200}ms` }}
-                            >
-                              <Diamond className="h-3 w-3 text-primary mt-1.5 flex-shrink-0 fill-current group-hover/feature:text-primary/80 transition-colors duration-300" />
-                              <span className="text-gray-500 leading-relaxed group-hover/feature:text-gray-400 transition-colors duration-300">{feature}</span>
-                            </div>
-                          ))}
-                        </div>
-
-                        {/* Decorative Bottom Line */}
-                        <div className="mt-8 pt-6 border-t border-white/10">
-                          <div className="w-20 h-[2px] bg-gradient-to-r from-primary via-primary/50 to-transparent rounded-full services-line-glow"></div>
-                        </div>
                       </div>
-                    </div>
-                  </Card>
-                </div>
-              );
-            })}
-          </Slider>
+                    </Card>
+                  </div>
+                );
+              })}
+            </Slider>
+          </div>
         </div>
       </div>
     </section>

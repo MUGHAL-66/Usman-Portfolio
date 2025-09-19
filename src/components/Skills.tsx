@@ -57,37 +57,38 @@ export function Skills() {
   };
 
   return (
-    <section id="skills" className="py-20">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8">
-        <div className="text-center space-y-12">
-          <h2 className="text-3xl md:text-4xl luxury-text-gradient">
+    <section id="skills" className="py-12 md:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center space-y-8 md:space-y-12">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl luxury-text-gradient">
             Skills & Expertise
           </h2>
           
           {/* Carousel Container */}
           <div className="relative">
-            <div className="flex items-center justify-center space-x-6">
-              {/* Previous Button */}
+            <div className="flex items-center justify-center space-x-2 sm:space-x-4 md:space-x-6 px-2">
+              {/* Previous Button - Hidden on mobile */}
               <Button
                 variant="outline"
                 size="icon"
                 onClick={prevSlide}
-                className="border-primary text-primary hover:bg-primary hover:text-black transition-all duration-300"
+                className="hidden sm:flex border-primary text-primary hover:bg-primary hover:text-black transition-all duration-300"
               >
                 <ChevronLeft className="h-5 w-5" />
               </Button>
 
               {/* Cards Container */}
-              <div className="flex space-x-6 overflow-hidden">
-                {getVisibleCards().map((card, index) => {
-                  const IconComponent = card.icon;
-                  return (
-                    <Card
-                      key={card.id}
-                      className={`bg-card border-white/10 p-6 w-80 flex-shrink-0 transition-all duration-300 transform hover:scale-105 ${
-                        index === 1 ? 'scale-105 border-primary/30' : 'scale-100'
-                      }`}
-                    >
+              <div className="w-full sm:w-auto overflow-x-auto py-4 sm:py-0">
+                <div className="flex space-x-4 sm:space-x-6 px-2 sm:px-0" style={{ minWidth: 'max-content' }}>
+                  {getVisibleCards().map((card, index) => {
+                    const IconComponent = card.icon;
+                    return (
+                      <Card
+                        key={card.id}
+                        className={`bg-card border-white/10 p-4 sm:p-6 w-[280px] sm:w-80 flex-shrink-0 transition-all duration-300 transform hover:scale-105 ${
+                          index === 1 ? 'scale-105 border-primary/30' : 'scale-100'
+                        }`}
+                      >
                       <div className="text-center space-y-4">
                         <div className="flex justify-center">
                           <div className="p-3 bg-primary/20 rounded-full">
